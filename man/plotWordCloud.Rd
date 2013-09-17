@@ -1,0 +1,49 @@
+\name{plotWordCloud}
+\alias{plotWordCloud}
+\title{PubMed wordcloud using function 'wordcloud' of package {wordcloud}}
+\usage{
+  plotWordCloud(abs, scale = c(10, 0.2), min.freq = 2,
+    max.words = 100, random.order = FALSE, rot.per = 0.35,
+    use.r.layout = FALSE, colors = brewer.pal(8, "Dark2"))
+}
+\arguments{
+  \item{abs}{output of cleanAbstracts, or a data frame with
+  one colume of 'word' and one colume of 'freq'.}
+
+  \item{scale}{A vector of length 2 indicating the range of
+  the size of the words.}
+
+  \item{min.freq}{words with frequency below min.freq will
+  not be plotted}
+
+  \item{max.words}{Maximum number of words to be plotted.
+  least frequent terms dropped}
+
+  \item{random.order}{plot words in random order. If false,
+  they will be plotted in decreasing frequency}
+
+  \item{rot.per}{proportion words with 90 degree rotation}
+
+  \item{use.r.layout}{if false, then c++ code is used for
+  collision detection, otherwise R is used}
+
+  \item{colors}{color words from least to most frequent}
+}
+\description{
+  PubMed wordcloud using function 'wordcloud' of package
+  {wordcloud}
+}
+\details{
+  This function just call 'wordcloud' from package
+  {wordcloud}. See package {wordcloud} for more details
+  about the parameters.
+}
+\examples{
+text="Jobs received a number of honors and public recognition."
+cleanD=cleanAbstracts(text)
+plotWordCloud(cleanD)
+}
+\seealso{
+  \code{\link{pmWordCloud}}
+}
+
