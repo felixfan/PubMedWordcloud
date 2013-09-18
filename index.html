@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pubmedwordcloud by felixfan</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Pubmedwordcloud</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/felixfan/PubMedWordcloud">View the Project on GitHub <small>felixfan/PubMedWordcloud</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/felixfan/PubMedWordcloud/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/felixfan/PubMedWordcloud/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/felixfan/PubMedWordcloud">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="pubmed-wordcloud" class="anchor" href="#pubmed-wordcloud"><span class="octicon octicon-link"></span></a>PubMed wordcloud</h1>
+
+<p>Examples of how to create a word cloud of the abstract of your publications in PubMed</p>
+
+<p>updated on Mon Sep 16 12:12:38 2013</p>
+
+<p><strong>PubMedWordcloud</strong> is avaliable on <a href="http://cran.r-project.org/web/packages/PubMedWordcloud/index.html">CRAN</a></p>
+
+<div class="highlight highlight-r"><pre><span class="c">library(PubMedWordcloud)  # you need to install it first</span>
+</pre></div>
+
+<h2>
+<a name="1-retrieve-pmids-from-pubmed" class="anchor" href="#1-retrieve-pmids-from-pubmed"><span class="octicon octicon-link"></span></a>1. retrieve PMIDs from PubMed</h2>
+
+<p>Since my first paper was published in 2007, I will retrieve all PMIDs of my paper from 2007 to this year (2013). I used both 'Yan-Hui Fan' and 'Yanhui Fan' as my name, so I assigned PMIDs for these two names to 'pmid1' and 'pmid2', respectively.</p>
+
+<div class="highlight highlight-r"><pre><span class="c">pmid1 = getPMIDs(author = "Yan-Hui Fan", dFrom = 2007, dTo = 2013, n = 10)</span>
+<span class="c">pmid1</span>
+</pre></div>
+
+<p>[1] "22698742" "22693232" "22564732" "22301463" "22015308" "21283797"</p>
+
+<div class="highlight highlight-r"><pre><span class="c">pmid2 = getPMIDs(author = "Yanhui Fan", dFrom = 2007, dTo = 2013, n = 10)</span>
+<span class="c">pmid2</span>
+</pre></div>
+
+<p>[1] "20576513" "19412437"</p>
+
+<p>There are six PMIDs in 'pmid1' and two PMIDs in 'pmid2'. </p>
+
+<h2>
+<a name="2-edit-pmids" class="anchor" href="#2-edit-pmids"><span class="octicon octicon-link"></span></a>2. edit PMIDs</h2>
+
+<p>Note that 'pmid1' and 'pmid2' are vectors, so it is easy to add or delete PMIDs to 'pmid1' and 'pmid2', or combine them. I also write a function to do it, in case you do not want to find out how to do it.   </p>
+
+<p>PMID "22698742" in 'pmid1' and "20576513" in 'pmid2' are published by others (have the same name with me). So I want to exclude them and then combine 'pmid1' and 'pmid2'.   </p>
+
+<div class="highlight highlight-r"><pre><span class="c">rm1 = "22698742"</span>
+<span class="c">pmids1 = editPMIDs(x = pmid1, y = rm1, method = "exclude")</span>
+
+<span class="c">rm2 = "20576513"</span>
+<span class="c">pmids2 = editPMIDs(x = pmid2, y = rm2, method = "exclude")</span>
+
+<span class="c">pmids = editPMIDs(x = pmids1, y = pmids2, method = "add")</span>
+</pre></div>
+
+<p><strong>Note: only unique PMIDs were kept</strong></p>
+
+<h2>
+<a name="3-download-abstracts" class="anchor" href="#3-download-abstracts"><span class="octicon octicon-link"></span></a>3. download abstracts</h2>
+
+<div class="highlight highlight-r"><pre><span class="c">abstracts = getAbstracts(pmids)</span>
+</pre></div>
+
+<h2>
+<a name="4-clean-abstracts" class="anchor" href="#4-clean-abstracts"><span class="octicon octicon-link"></span></a>4. clean abstracts</h2>
+
+<p>clean data using paackage {tm}: remove Punctuations, remove Numbers, Translate characters to lower or upper case, remove stopwords, remove user specified words, Stemming words.   </p>
+
+<div class="highlight highlight-r"><pre><span class="c">cleanAbs = cleanAbstracts(abstracts)</span>
+</pre></div>
+
+<h2>
+<a name="5-plot-wordcloud-using-plotwordcloud" class="anchor" href="#5-plot-wordcloud-using-plotwordcloud"><span class="octicon octicon-link"></span></a>5. plot wordcloud using 'plotWordCloud'</h2>
+
+<p>Plot with dafault parameters   </p>
+
+<div class="highlight highlight-r"><pre><span class="c">plotWordCloud(cleanAbs)</span>
+</pre></div>
+
+<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"></p>
+
+<p>Do not rotate words.  </p>
+
+<div class="highlight highlight-r"><pre><span class="c">plotWordCloud(cleanAbs, rot.per = 0)</span>
+</pre></div>
+
+<p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"></p>
+
+<p>Plot using other colors.</p>
+
+<div class="highlight highlight-r"><pre><span class="c">colors = colSets(type = "Paired")</span>
+<span class="c">plotWordCloud(cleanAbs, rot.per = 0, colors = colors)</span>
+</pre></div>
+
+<p><img src="figure/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"></p>
+
+<p>Clean the data with Stemming words is TRUE and plot again.   </p>
+
+<div class="highlight highlight-r"><pre><span class="c">cleanAbs2 = cleanAbstracts(abstracts, stemDoc = TRUE)</span>
+<span class="c">plotWordCloud(cleanAbs2)</span>
+</pre></div>
+
+<p><img src="figure/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"></p>
+
+<p>**Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. 'pmWordCloud' can adjust the position and plot all words.</p>
+
+<h2>
+<a name="6plot-wordcloud-using-pmwordcloud" class="anchor" href="#6plot-wordcloud-using-pmwordcloud"><span class="octicon octicon-link"></span></a>6.plot wordcloud using 'pmWordCloud'</h2>
+
+<div class="highlight highlight-r"><pre><span class="c">pmWordCloud(cleanAbs, scale = 0.2)</span>
+</pre></div>
+
+<p><img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"></p>
+
+<div class="highlight highlight-r"><pre><span class="c">pmWordCloud(cleanAbs, rot.per = 0, scale = 0.2)</span>
+</pre></div>
+
+<p><img src="figure/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"></p>
+
+<div class="highlight highlight-r"><pre><span class="c">colors = colSets(type = "Set1")</span>
+<span class="c">pmWordCloud(cleanAbs, rot.per = 0, colors = colors, scale = 0.2)</span>
+</pre></div>
+
+<p><img src="figure/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"></p>
+
+<p>Another example plot.<br><img src="figure/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"></p>
+
+<p>Only plot 100 words (most frequent words).<br><img src="figure/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"></p>
+
+<h2>
+<a name="7-references" class="anchor" href="#7-references"><span class="octicon octicon-link"></span></a>7. References</h2>
+
+<p><a href="http://www.vesnam.com/Rblog/pubmedwordcloud/">Shiny Pubmed Word Clouds</a><br><a href="http://cran.r-project.org/web/packages/wordcloud/index.html">wordcloud</a><br><a href="http://cran.r-project.org/web/packages/GOsummaries/index.html">GOsummaries: Word cloud summaries of GO enrichment analysis</a><br><a href="http://georeferenced.wordpress.com/2013/01/15/rwordcloud/">How I used R to create a word cloud, step by step</a> </p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/felixfan">felixfan</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
