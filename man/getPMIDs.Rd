@@ -1,6 +1,6 @@
 \name{getPMIDs}
 \alias{getPMIDs}
-\title{get PMIDs}
+\title{get PMIDs using author names}
 \usage{
   getPMIDs(author, dFrom, dTo, n = 50)
 }
