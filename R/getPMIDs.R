@@ -1,4 +1,4 @@
-#' @title get PMIDs
+#' @title get PMIDs using author names
 #' @description retrieve PMIDs (each PMID is 8 digits long) from PubMed for author and the specified date.
 #' @param author author's name
 #' @param dFrom  start year

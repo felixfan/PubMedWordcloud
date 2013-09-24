@@ -62,7 +62,7 @@ getPMIDsByKeyWords <-function(keys=NULL,journal=NULL,dFrom=NULL, dTo=NULL, n=100
   hlpQ4 <- paste(hlpQ3, rmQ, sep="")
   
   searchUrl <- paste(eSearch, hlpQ4, sep = "" )
-  print(searchUrl)
+  
   hlpURL <- getURL(searchUrl)
   
   doc <- xmlTreeParse(hlpURL, asText = TRUE)     
