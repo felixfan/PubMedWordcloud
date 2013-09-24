@@ -1,19 +1,25 @@
 PubMed wordcloud
 ==============================
-Examples of how to create a word cloud of the abstract of your publications in PubMed
+Examples of how to create a word cloud using abstracts in PubMed
 
-updated on Mon Sep 16 12:12:38 2013
+updated on Tue Sep 24 17:18:48 2013
 
-**PubMedWordcloud** is avaliable on [CRAN](http://cran.r-project.org/web/packages/PubMedWordcloud/index.html)
+**PubMedWordcloud** is avaliable on [CRAN](http://cran.r-project.org/web/packages/PubMedWordcloud/index.html) and [GitHub](https://github.com/felixfan/PubMedWordcloud)
 
-
-```r
-library(PubMedWordcloud)  # you need to install it first
+```
+install.packages("PubMedWordcloud",dependencies=TRUE)
 ```
 
 
-1. retrieve PMIDs from PubMed
-----------------------------------
+```r
+library(PubMedWordcloud)
+```
+
+
+1. wordcloud of my publications
+--------------------------------------
+### 1.1 retrieve PMIDs from PubMed
+
 Since my first paper was published in 2007, I will retrieve all PMIDs of my paper from 2007 to this year (2013). I used both 'Yan-Hui Fan' and 'Yanhui Fan' as my name, so I assigned PMIDs for these two names to 'pmid1' and 'pmid2', respectively.
 
 
@@ -34,8 +40,8 @@ pmid2
 
 There are six PMIDs in 'pmid1' and two PMIDs in 'pmid2'. 
 
-2. edit PMIDs
---------------------------------
+### 1.2 edit PMIDs
+
 Note that 'pmid1' and 'pmid2' are vectors, so it is easy to add or delete PMIDs to 'pmid1' and 'pmid2', or combine them. I also write a function to do it, in case you do not want to find out how to do it.   
 
 PMID "22698742" in 'pmid1' and "20576513" in 'pmid2' are published by others (have the same name with me). So I want to exclude them and then combine 'pmid1' and 'pmid2'.   
@@ -54,16 +60,16 @@ pmids = editPMIDs(x = pmids1, y = pmids2, method = "add")
 
 **Note: only unique PMIDs were kept**
 
-3. download abstracts
-------------------------------
+### 1.3 download abstracts
+
 
 ```r
 abstracts = getAbstracts(pmids)
 ```
 
 
-4. clean abstracts
------------------------------
+### 1.4 clean abstracts
+
 clean data using paackage {tm}: remove Punctuations, remove Numbers, Translate characters to lower or upper case, remove stopwords, remove user specified words, Stemming words.   
 
 
@@ -72,8 +78,7 @@ cleanAbs = cleanAbstracts(abstracts)
 ```
 
 
-5. plot wordcloud using 'plotWordCloud'
------------------------------------------
+### 1.5 plot wordcloud using 'plotWordCloud'
 
 Plot with dafault parameters   
 
@@ -115,11 +120,11 @@ plotWordCloud(cleanAbs2)
 
 **Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. 'pmWordCloud' can adjust the position and plot all words.
 
-6.plot wordcloud using 'pmWordCloud'
----------------------------------------
+### 1.6 plot wordcloud using 'pmWordCloud'
+
 
 ```r
-pmWordCloud(cleanAbs, scale = 0.2)
+pmWordCloud(cleanAbs, scale = 0.4)
 ```
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
@@ -127,7 +132,7 @@ pmWordCloud(cleanAbs, scale = 0.2)
 
 
 ```r
-pmWordCloud(cleanAbs, rot.per = 0, scale = 0.2)
+pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4)
 ```
 
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
@@ -136,25 +141,53 @@ pmWordCloud(cleanAbs, rot.per = 0, scale = 0.2)
 
 ```r
 colors = colSets(type = "Set1")
-pmWordCloud(cleanAbs, rot.per = 0, colors = colors, scale = 0.2)
+pmWordCloud(cleanAbs, rot.per = 0, colors = colors, scale = 0.4)
 ```
 
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
 
 
-Another example plot.    
+2. wordcloud of study about AIS (adolescent idiopathic scoliosis)
+----------------------------------
+
+```r
+pmids = getPMIDsByKeyWords(keys = "adolescent idiopathic scoliosis", dFrom = 2010, 
+    dTo = 2013)
+```
+
+```r
+abstracts = getAbstracts(pmids)
+cleanAbs = cleanAbstracts(abstracts)
+pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4, min.freq = 3)
+```
+
 ![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
 
 
-Only plot 100 words (most frequent words).   
+3. wordcloud of study about AD (Alzheimer's disease)
+----------------------------------
+
+```r
+pmids = getPMIDsByKeyWords(keys = "Alzheimer's disease", dFrom = 2013, dTo = 2013, 
+    n = 100)
+```
+
+```r
+abstracts = getAbstracts(pmids)
+cleanAbs = cleanAbstracts(abstracts)
+pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4, min.freq = 8)
+```
+
 ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
 
 
-7. References
+4. References
 -----------------
 [Shiny Pubmed Word Clouds](http://www.vesnam.com/Rblog/pubmedwordcloud/)    
 [wordcloud](http://cran.r-project.org/web/packages/wordcloud/index.html)   
 [GOsummaries: Word cloud summaries of GO enrichment analysis](http://cran.r-project.org/web/packages/GOsummaries/index.html)   
-[How I used R to create a word cloud, step by step](http://georeferenced.wordpress.com/2013/01/15/rwordcloud/) 
+[How I used R to create a word cloud, step by step](http://georeferenced.wordpress.com/2013/01/15/rwordcloud/)   
+[NCBI](http://www.ncbi.nlm.nih.gov/books/NBK25500/)   
+
 
 
