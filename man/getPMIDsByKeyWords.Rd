@@ -1,0 +1,39 @@
+\name{getPMIDsByKeyWords}
+\alias{getPMIDsByKeyWords}
+\title{get PMIDs using Journal names and Keywords}
+\usage{
+  getPMIDsByKeyWords(keys = NULL, journal = NULL,
+    dFrom = NULL, dTo = NULL, n = 10000)
+}
+\arguments{
+  \item{keys}{keywords}
+
+  \item{journal}{journal name}
+
+  \item{dFrom}{start year}
+
+  \item{dTo}{end year}
+
+  \item{n}{max number of retrieved articles}
+}
+\description{
+  retrieve PMIDs (each PMID is 8 digits long) from PubMed
+  for Specific Journal, Keywords and date.
+}
+\examples{
+getPMIDsByKeyWords(keys="breast cancer", journal="science",dFrom=2012,dTo=2013)
+
+getPMIDsByKeyWords(keys="breast cancer", journal="science")
+
+getPMIDsByKeyWords(keys="breast cancer",dFrom=2012,dTo=2013)
+
+getPMIDsByKeyWords(journal="science",dFrom=2012,dTo=2013)
+}
+\seealso{
+  \code{\link{getAbstracts}}
+
+  \code{\link{editPMIDs}}
+
+  \code{\link{getPMIDs}}
+}
+
