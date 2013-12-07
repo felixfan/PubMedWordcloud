@@ -6,6 +6,8 @@ updated on Tue Sep 24 17:18:48 2013
 
 **PubMedWordcloud** is avaliable on [CRAN](http://cran.r-project.org/web/packages/PubMedWordcloud/index.html) and [GitHub](https://github.com/felixfan/PubMedWordcloud)
 
+[More about me](http://felixfan.github.io)
+
 ```
 install.packages("PubMedWordcloud",dependencies=TRUE)
 ```
