@@ -9,9 +9,15 @@ updated on Tue Sep 24 17:18:48 2013
 [More about me](http://felixfan.github.io)
 
 ```
-install.packages("PubMedWordcloud",dependencies=TRUE)
+install.packages("PubMedWordcloud",dependencies=TRUE) # from CRAN
 ```
 
+or   
+
+```
+library(devtools)
+install_github("felixfan/PubMedWordcloud") # from GitHub
+```
 
 ```r
 library(PubMedWordcloud)
