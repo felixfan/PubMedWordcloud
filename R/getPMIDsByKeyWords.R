@@ -26,12 +26,12 @@ getPMIDsByKeyWords <-function(keys=NULL,journal=NULL,dFrom=NULL, dTo=NULL, n=100
   
   kQ <- ""
   if(!is.null(keys)){
-    kQ <- str_replace(keys, " ", "+")
+    kQ <- str_replace_all(keys, " ", "+")
   }
   
   jQ <- ""
   if(!is.null(journal)){
-    jt <- str_replace(journal, " ", "+")
+    jt <- str_replace_all(journal, " ", "+")
     jQ <- paste(jt, "[journal]", sep = "")
   }
   
