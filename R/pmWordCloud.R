@@ -20,7 +20,7 @@
 #' # cleanAbs=cleanAbstracts(Abs)
 #' # pmWordCloud(cleanAbs)
 pmWordCloud<-function (abstracts, rot.per = 0.3, max_min = c(1, 0.1), scale = 0.2, min.freq = 2, 
-                       max.words = Inf, random.order = FALSE, colors=brewer.pal(8,"Dark2"), 
+                       max.words = Inf, random.order = FALSE, colors=colSets(type="Accent"), 
                        algorithm = c("circle","leftside","rightside"), tryfit = TRUE, 
                        dimensions = unit(c(1, 1), "npc")) {
   algorithm=match.arg(algorithm)
