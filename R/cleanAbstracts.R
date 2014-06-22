@@ -11,11 +11,11 @@
 #' @seealso \code{\link{getAbstracts}}
 #' @export
 #' @examples
-#' Abs=getAbstracts(c("22693232", "22564732", "22301463", "22015308", "21283797", "19412437"))
-#' cleanAbs=cleanAbstracts(Abs)
+#' # Abs=getAbstracts(c("22693232", "22564732"))
+#' # cleanAbs=cleanAbstracts(Abs)
 #' 
-#' text="Jobs received a number of honors and public recognition." 
-#' cleanD=cleanAbstracts(text)
+#' # text="Jobs received a number of honors and public recognition." 
+#' # cleanD=cleanAbstracts(text)
 cleanAbstracts <- function(abstracts,rmNum=TRUE,tolw=TRUE,toup=FALSE,
                            rmWords=TRUE,yrWords=NULL,stemDoc=FALSE){
   abstTxt <- Corpus(VectorSource(abstracts))
@@ -38,7 +38,7 @@ cleanAbstracts <- function(abstracts,rmNum=TRUE,tolw=TRUE,toup=FALSE,
   if(stemDoc==TRUE){
     text2.corpus = tm_map(text2.corpus, stemDocument)
   }
- 
+  text2.corpus <- tm_map(text2.corpus, PlainTextDocument) ### new added
   tdm <- TermDocumentMatrix(text2.corpus)
   m <- as.matrix(tdm)
   v <- sort(rowSums(m),decreasing=TRUE)

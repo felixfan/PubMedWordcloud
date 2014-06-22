@@ -10,13 +10,13 @@
 #' @seealso \code{\link{getPMIDs}}
 #' @export
 #' @examples
-#' getPMIDsByKeyWords(keys="breast cancer", journal="science",dFrom=2012,dTo=2013)
+#' # getPMIDsByKeyWords(keys="breast cancer", journal="science",dTo=2013)
 #' 
-#' getPMIDsByKeyWords(keys="breast cancer", journal="science")
+#' # getPMIDsByKeyWords(keys="breast cancer", journal="science")
 #' 
-#' getPMIDsByKeyWords(keys="breast cancer",dFrom=2012,dTo=2013)
+#' # getPMIDsByKeyWords(keys="breast cancer",dFrom=2012,dTo=2013)
 #' 
-#' getPMIDsByKeyWords(journal="science",dFrom=2012,dTo=2013)
+#' # getPMIDsByKeyWords(journal="science",dFrom=2012,dTo=2013)
 getPMIDsByKeyWords <-function(keys=NULL,journal=NULL,dFrom=NULL, dTo=NULL, n=10000){
   eSearch <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=" 
   
@@ -26,12 +26,12 @@ getPMIDsByKeyWords <-function(keys=NULL,journal=NULL,dFrom=NULL, dTo=NULL, n=100
   
   kQ <- ""
   if(!is.null(keys)){
-    kQ <- str_replace(keys, " ", "+")
+    kQ <- str_replace_all(keys, " ", "+")
   }
   
   jQ <- ""
   if(!is.null(journal)){
-    jt <- str_replace(journal, " ", "+")
+    jt <- str_replace_all(journal, " ", "+")
     jQ <- paste(jt, "[journal]", sep = "")
   }
   
