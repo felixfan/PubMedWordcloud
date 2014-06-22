@@ -16,9 +16,9 @@
 #' @seealso \code{\link{plotWordCloud}}
 #' @export
 #' @examples
-#' Abs=getAbstracts(c("22693232", "22564732", "22301463", "22015308", "21283797", "19412437"))
-#' cleanAbs=cleanAbstracts(Abs)
-#' pmWordCloud(cleanAbs)
+#' # Abs=getAbstracts(c("22693232", "22564732", "22301463", "22015308", "21283797", "19412437"))
+#' # cleanAbs=cleanAbstracts(Abs)
+#' # pmWordCloud(cleanAbs)
 pmWordCloud<-function (abstracts, rot.per = 0.3, max_min = c(1, 0.1), scale = 0.2, min.freq = 2, 
                        max.words = Inf, random.order = FALSE, colors=brewer.pal(8,"Dark2"), 
                        algorithm = c("circle","leftside","rightside"), tryfit = TRUE, 

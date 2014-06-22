@@ -12,9 +12,9 @@
 #' @seealso \code{\link{pmWordCloud}}
 #' @export
 #' @examples
-#' text="Jobs received a number of honors and public recognition." 
-#' cleanD=cleanAbstracts(text)
-#' plotWordCloud(cleanD)
+#' # text="Jobs received a number of honors and public recognition." 
+#' # cleanD=cleanAbstracts(text)
+#' # plotWordCloud(cleanD,min.freq=1,scale=c(2,1))
 plotWordCloud <- function(abs, scale=c(10,0.2),min.freq=2,max.words=100,
                           random.order=FALSE,rot.per=0.35,use.r.layout=FALSE, 
                           colors=brewer.pal(8,"Dark2")){

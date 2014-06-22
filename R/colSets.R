@@ -3,9 +3,9 @@
 #' @param type palette names from the lists: Accent, Dark2, Pastel1, Pastel2, Paired, Set1, Set2, Set3
 #' @export
 #' @examples
-#' colors= colSets(type="Accent")
-#' colors= colSets(type="Paired")
-#' colors= colSets(type="Set3")
+#' # colors= colSets(type="Accent")
+#' # colors= colSets(type="Paired")
+#' # colors= colSets(type="Set3")
 colSets <- function(type){
   n=switch(type,
           Accent = 8,

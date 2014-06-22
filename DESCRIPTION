@@ -1,8 +1,8 @@
 Package: PubMedWordcloud
 Title: PubMed Word Clouds
 Description: create a word cloud using the abstract of publications from PubMed
-Version: 0.3
-Date: 2014-01-15
+Version: 0.3.1
+Date: 2014-06-22
 Author: Felix Yanhui Fan <nolanfyh@gmail.com>
 Imports:
     XML,
@@ -14,4 +14,4 @@ Imports:
     RColorBrewer
 Maintainer: Felix Yanhui Fan <nolanfyh@gmail.com>
 License: GPL (>= 2)
-URL: http://felixfan.github.io/PubMedWordcloud/, http://rpubs.com/Felix/8567
+URL: http://felixfan.github.io/PubMedWordcloud/

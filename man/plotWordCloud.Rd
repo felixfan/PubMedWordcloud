@@ -2,9 +2,9 @@
 \alias{plotWordCloud}
 \title{PubMed wordcloud using function 'wordcloud' of package {wordcloud}}
 \usage{
-  plotWordCloud(abs, scale = c(10, 0.2), min.freq = 2,
-    max.words = 100, random.order = FALSE, rot.per = 0.35,
-    use.r.layout = FALSE, colors = brewer.pal(8, "Dark2"))
+plotWordCloud(abs, scale = c(10, 0.2), min.freq = 2, max.words = 100,
+  random.order = FALSE, rot.per = 0.35, use.r.layout = FALSE,
+  colors = brewer.pal(8, "Dark2"))
 }
 \arguments{
   \item{abs}{output of cleanAbstracts, or a data frame with
@@ -30,20 +30,20 @@
   \item{colors}{color words from least to most frequent}
 }
 \description{
-  PubMed wordcloud using function 'wordcloud' of package
-  {wordcloud}
+PubMed wordcloud using function 'wordcloud' of package
+{wordcloud}
 }
 \details{
-  This function just call 'wordcloud' from package
-  {wordcloud}. See package {wordcloud} for more details
-  about the parameters.
+This function just call 'wordcloud' from package
+{wordcloud}. See package {wordcloud} for more details about
+the parameters.
 }
 \examples{
 text="Jobs received a number of honors and public recognition."
 cleanD=cleanAbstracts(text)
-plotWordCloud(cleanD)
+plotWordCloud(cleanD,min.freq=1,scale=c(2,1))
 }
 \seealso{
-  \code{\link{pmWordCloud}}
+\code{\link{pmWordCloud}}
 }
 
