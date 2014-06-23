@@ -21,11 +21,14 @@
 #' # Abs=getAbstracts(c("22693232", "22564732", "22301463", "22015308", "21283797", "19412437"))
 #' # cleanAbs=cleanAbstracts(Abs)
 #' # pmWordCloud(cleanAbs)
-pmWordCloud<-function (abstracts, rot.per = 0.3, max_min = c(1, 0.1), scale = 0.2, min.freq = 2, 
+pmWordCloud<-function (abstracts, rot.per = 0.3, max_min = c(1, 0.1), scale = 0.2, min.freq = 1, 
                        max.words = Inf, random.order = FALSE, colors=colSets(type="Accent"), 
                        random.colors=TRUE,algorithm = c("circle","leftside","rightside"), 
 					   tryfit = TRUE, dimensions = unit(c(1, 1), "npc")) {
   algorithm=match.arg(algorithm)
+  abstracts$word=as.character(abstracts$word)
+  abstracts$freq=as.numeric(as.character(abstracts$freq))
+  abstracts=abstracts[abstracts$freq >= min.freq,]
   plotWordcloud(words=abstracts$word,freq=abstracts$freq,rot.per=rot.per, max_min = max_min, 
                 scale = scale, min.freq = min.freq, max.words = max.words, 
                 random.order = random.order, colors=colors, algorithm =algorithm,
