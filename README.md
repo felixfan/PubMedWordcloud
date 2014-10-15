@@ -38,7 +38,7 @@ pmid1=getPMIDs(author="Yan-Hui Fan",dFrom=2007,dTo=2014,n=10)
 pmid1
 ```
 
-[1] "24935264" "24721834" "22698742" "22693232" "22564732" "22301463"
+[1] "24935264" "24721834" "22698742" "22693232" "22564732" "22301463"     
 [7] "22015308" "21283797"
 
 ```r
@@ -93,7 +93,7 @@ Plot  withdafault parameters
 plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3))
 ```
 
-![](figure/unnamed-chunk-8-1.png) 
+![](/figure/unnamed-chunk-8-1.png) 
 
 Do not rotate words.  
 
@@ -101,7 +101,7 @@ Do not rotate words.
 plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3),rot.per=0)
 ```
 
-![](figure/unnamed-chunk-9-1.png) 
+![](/figure/unnamed-chunk-9-1.png) 
 
 Plot using other colors.
 
@@ -110,7 +110,7 @@ colors=colSets(type="Paired")
 plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3),colors=colors)
 ```
 
-![](figure/unnamed-chunk-10-1.png) 
+![](/figure/unnamed-chunk-10-1.png) 
 
 Clean the data with Stemming words is TRUE and plot again.   
 
@@ -119,7 +119,7 @@ cleanAbs2=cleanAbstracts(abstracts,stemDoc =TRUE)
 plotWordCloud(cleanAbs2,min.freq = 2, scale = c(2, 0.3))
 ```
 
-![](figure/unnamed-chunk-11-1.png) 
+![](/figure/unnamed-chunk-11-1.png) 
 
 **Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. try to adjust the scale parameter, using smaller value may remove these warnings.    
 
