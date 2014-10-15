@@ -93,7 +93,7 @@ Plot  withdafault parameters
 plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3))
 ```
 
-![](/figure/unnamed-chunk-8-1.png) 
+![](/figure/f1.png) 
 
 Do not rotate words.  
 
@@ -101,7 +101,7 @@ Do not rotate words.
 plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3),rot.per=0)
 ```
 
-![](/figure/unnamed-chunk-9-1.png) 
+![](/figure/f2.png) 
 
 Plot using other colors.
 
@@ -110,7 +110,7 @@ colors=colSets(type="Paired")
 plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3),colors=colors)
 ```
 
-![](/figure/unnamed-chunk-10-1.png) 
+![](/figure/f3.png) 
 
 Clean the data with Stemming words is TRUE and plot again.   
 
@@ -119,7 +119,7 @@ cleanAbs2=cleanAbstracts(abstracts,stemDoc =TRUE)
 plotWordCloud(cleanAbs2,min.freq = 2, scale = c(2, 0.3))
 ```
 
-![](/figure/unnamed-chunk-11-1.png) 
+![](/figure/f4.png) 
 
 **Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. try to adjust the scale parameter, using smaller value may remove these warnings.    
 
