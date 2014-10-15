@@ -1,44 +1,54 @@
-PubMed wordcloud
-==============================
+# PubMed wordcloud
+
 Examples of how to create a word cloud using abstracts in PubMed
 
-updated on Tue Sep 24 17:18:48 2013
+updated on Thu Oct 16 00:09:49 2014
 
-**PubMedWordcloud** is avaliable on [CRAN](http://cran.r-project.org/web/packages/PubMedWordcloud/index.html) and [GitHub](https://github.com/felixfan/PubMedWordcloud)
+**PubMedWordcloud** is avaliable on [CRAN](http://cran.r-project.org/web/packages/PubMedWordcloud/index.html) and [GitHub](https://github.com/felixfan/PubMedWordcloud)     
 
-```
+[More about me](http://felixfan.github.io)    
+
+
+```r
 install.packages("PubMedWordcloud",dependencies=TRUE)
+```
+
+or     
+
+
+```r
+library(devtools)
+install_github("felixfan/PubMedWordcloud") # from GitHub
 ```
 
 
 ```r
-library(PubMedWordcloud)
+library(PubMedWordcloud)  
 ```
-
 
 1. wordcloud of my publications
 --------------------------------------
 ### 1.1 retrieve PMIDs from PubMed
 
-Since my first paper was published in 2007, I will retrieve all PMIDs of my paper from 2007 to this year (2013). I used both 'Yan-Hui Fan' and 'Yanhui Fan' as my name, so I assigned PMIDs for these two names to 'pmid1' and 'pmid2', respectively.
+Since my first paper was published in 2007, I will retrieve all PMIDs of my paper from 2007 to this year (2014). I used both 'Yan-Hui Fan' and 'Yanhui Fan' as my name, so I assigned PMIDs for these two names to 'pmid1' and 'pmid2', respectively.
 
 
 ```r
-pmid1 = getPMIDs(author = "Yan-Hui Fan", dFrom = 2007, dTo = 2013, n = 10)
+pmid1=getPMIDs(author="Yan-Hui Fan",dFrom=2007,dTo=2014,n=10)
 pmid1
 ```
 
-[1] "22698742" "22693232" "22564732" "22301463" "22015308" "21283797"
+[1] "24935264" "24721834" "22698742" "22693232" "22564732" "22301463"     
+[7] "22015308" "21283797"
 
 ```r
-pmid2 = getPMIDs(author = "Yanhui Fan", dFrom = 2007, dTo = 2013, n = 10)
+pmid2=getPMIDs(author="Yanhui Fan",dFrom=2007,dTo=2014,n=10)
 pmid2
 ```
 
-[1] "20576513" "19412437"
+[1] "24890309" "20576513" "19412437"
 
-
-There are six PMIDs in 'pmid1' and two PMIDs in 'pmid2'. 
+There are eight PMIDs in 'pmid1' and three PMIDs in 'pmid2'. 
 
 ### 1.2 edit PMIDs
 
@@ -48,15 +58,14 @@ PMID "22698742" in 'pmid1' and "20576513" in 'pmid2' are published by others (ha
 
 
 ```r
-rm1 = "22698742"
-pmids1 = editPMIDs(x = pmid1, y = rm1, method = "exclude")
+rm1="22698742"
+pmids1=editPMIDs(x=pmid1,y=rm1,method="exclude")
 
-rm2 = "20576513"
-pmids2 = editPMIDs(x = pmid2, y = rm2, method = "exclude")
+rm2="20576513"
+pmids2=editPMIDs(x=pmid2,y=rm2,method="exclude")
 
-pmids = editPMIDs(x = pmids1, y = pmids2, method = "add")
+pmids=editPMIDs(x=pmids1,y=pmids2,method="add")
 ```
-
 
 **Note: only unique PMIDs were kept**
 
@@ -64,9 +73,8 @@ pmids = editPMIDs(x = pmids1, y = pmids2, method = "add")
 
 
 ```r
-abstracts = getAbstracts(pmids)
+abstracts=getAbstracts(pmids)
 ```
-
 
 ### 1.4 clean abstracts
 
@@ -74,112 +82,46 @@ clean data using paackage {tm}: remove Punctuations, remove Numbers, Translate c
 
 
 ```r
-cleanAbs = cleanAbstracts(abstracts)
+cleanAbs=cleanAbstracts(abstracts)
 ```
-
 
 ### 1.5 plot wordcloud using 'plotWordCloud'
 
-Plot with dafault parameters   
+Plot  withdafault parameters   
 
 ```r
-plotWordCloud(cleanAbs)
+plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3))
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
-
+![](/figure/unnamed-chunk-8-1.png) 
 
 Do not rotate words.  
 
 ```r
-plotWordCloud(cleanAbs, rot.per = 0)
+plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3),rot.per=0)
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
-
+![](/figure/unnamed-chunk-9-1.png) 
 
 Plot using other colors.
 
 ```r
-colors = colSets(type = "Paired")
-plotWordCloud(cleanAbs, rot.per = 0, colors = colors)
+colors=colSets(type="Paired")
+plotWordCloud(cleanAbs,min.freq = 2, scale = c(2, 0.3),colors=colors)
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
-
+![](/figure/unnamed-chunk-10-1.png) 
 
 Clean the data with Stemming words is TRUE and plot again.   
 
 ```r
-cleanAbs2 = cleanAbstracts(abstracts, stemDoc = TRUE)
-plotWordCloud(cleanAbs2)
+cleanAbs2=cleanAbstracts(abstracts,stemDoc =TRUE)
+plotWordCloud(cleanAbs2,min.freq = 2, scale = c(2, 0.3))
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
+![](/figure/unnamed-chunk-11-1.png) 
 
-
-**Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. 'pmWordCloud' can adjust the position and plot all words.
-
-### 1.6 plot wordcloud using 'pmWordCloud'
-
-
-```r
-pmWordCloud(cleanAbs, scale = 0.4)
-```
-
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10.png) 
-
-
-
-```r
-pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4)
-```
-
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11.png) 
-
-
-
-```r
-colors = colSets(type = "Set1")
-pmWordCloud(cleanAbs, rot.per = 0, colors = colors, scale = 0.4)
-```
-
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12.png) 
-
-
-2. wordcloud of study about AIS (adolescent idiopathic scoliosis)
-----------------------------------
-
-```r
-pmids = getPMIDsByKeyWords(keys = "adolescent idiopathic scoliosis", dFrom = 2010, 
-    dTo = 2013)
-```
-
-```r
-abstracts = getAbstracts(pmids)
-cleanAbs = cleanAbstracts(abstracts)
-pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4, min.freq = 3)
-```
-
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13.png) 
-
-
-3. wordcloud of study about AD (Alzheimer's disease)
-----------------------------------
-
-```r
-pmids = getPMIDsByKeyWords(keys = "Alzheimer's disease", dFrom = 2013, dTo = 2013, 
-    n = 100)
-```
-
-```r
-abstracts = getAbstracts(pmids)
-cleanAbs = cleanAbstracts(abstracts)
-pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4, min.freq = 8)
-```
-
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
-
+**Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. try to adjust the scale parameter, using smaller value may remove these warnings.    
 
 4. References
 -----------------

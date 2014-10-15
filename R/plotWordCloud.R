@@ -9,14 +9,16 @@
 #' @param use.r.layout if false, then c++ code is used for collision detection, otherwise R is used
 #' @param colors color words from least to most frequent
 #' @details This function just call 'wordcloud' from package {wordcloud}. See package {wordcloud} for more details about the parameters.
-#' @seealso \code{\link{pmWordCloud}}
 #' @export
 #' @examples
 #' # text="Jobs received a number of honors and public recognition." 
 #' # cleanD=cleanAbstracts(text)
 #' # plotWordCloud(cleanD,min.freq=1,scale=c(2,1))
-plotWordCloud <- function(abs, scale=c(10,0.2),min.freq=2,max.words=100,
+plotWordCloud <- function(abs, scale=c(3,0.3),min.freq=1,max.words=100,
                           random.order=FALSE,rot.per=0.35,use.r.layout=FALSE, 
                           colors=brewer.pal(8,"Dark2")){
+  abs$word=as.character(abs$word)
+  abs$freq=as.numeric(as.character(abs$freq))
+  abs=abs[abs$freq >= min.freq,]
   wordcloud(abs$word,abs$freq, scale=scale, min.freq = min.freq, max.words=max.words, random.order = random.order, rot.per=rot.per, use.r.layout=use.r.layout,colors=colors)   
 }
