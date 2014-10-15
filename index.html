@@ -1,54 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>Pubmedwordcloud by felixfan</title>
 
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Pubmedwordcloud by felixfan</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+    <div class="wrapper">
+      <header>
         <h1>Pubmedwordcloud</h1>
-        <h2></h2>
-        <a href="https://github.com/felixfan/PubMedWordcloud" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+        <p></p>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
+        <p class="view"><a href="https://github.com/felixfan/PubMedWordcloud">View the Project on GitHub <small>felixfan/PubMedWordcloud</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/felixfan/PubMedWordcloud/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/felixfan/PubMedWordcloud/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/felixfan/PubMedWordcloud">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
 <a name="pubmed-wordcloud" class="anchor" href="#pubmed-wordcloud"><span class="octicon octicon-link"></span></a>PubMed wordcloud</h1>
 
 <p>Examples of how to create a word cloud using abstracts in PubMed</p>
 
-<p>updated on Tue Sep 24 17:18:48 2013</p>
+<p>updated on Thu Oct 16 00:09:49 2014</p>
 
-<p><strong>PubMedWordcloud</strong> is avaliable on <a href="http://cran.r-project.org/web/packages/PubMedWordcloud/index.html">CRAN</a> and <a href="https://github.com/felixfan/PubMedWordcloud">GitHub</a></p>
+<p><strong>PubMedWordcloud</strong> is avaliable on <a href="http://cran.r-project.org/web/packages/PubMedWordcloud/index.html">CRAN</a> and <a href="https://github.com/felixfan/PubMedWordcloud">GitHub</a>     </p>
 
-<p><a href="http://felixfan.github.io">More about me</a></p>
+<p><a href="http://felixfan.github.io">More about me</a>    </p>
 
-<pre><code>install.packages("PubMedWordcloud",dependencies=TRUE) # from CRAN
-</code></pre>
+<div class="highlight highlight-r"><pre>install.packages<span class="p">(</span><span class="s">"PubMedWordcloud"</span><span class="p">,</span>dependencies<span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
 
-<p>or   </p>
+<p>or     </p>
 
-<pre><code>library(devtools)
-install_github("felixfan/PubMedWordcloud") # from GitHub
-</code></pre>
+<div class="highlight highlight-r"><pre><span class="kn">library</span><span class="p">(</span>devtools<span class="p">)</span>
+install_github<span class="p">(</span><span class="s">"felixfan/PubMedWordcloud"</span><span class="p">)</span> <span class="c1"># from GitHub</span>
+</pre></div>
 
-<div class="highlight highlight-r"><pre><span class="c">library(PubMedWordcloud)</span>
+<div class="highlight highlight-r"><pre><span class="kn">library</span><span class="p">(</span>PubMedWordcloud<span class="p">)</span>  
 </pre></div>
 
 <h2>
@@ -57,21 +57,22 @@ install_github("felixfan/PubMedWordcloud") # from GitHub
 <h3>
 <a name="11-retrieve-pmids-from-pubmed" class="anchor" href="#11-retrieve-pmids-from-pubmed"><span class="octicon octicon-link"></span></a>1.1 retrieve PMIDs from PubMed</h3>
 
-<p>Since my first paper was published in 2007, I will retrieve all PMIDs of my paper from 2007 to this year (2013). I used both 'Yan-Hui Fan' and 'Yanhui Fan' as my name, so I assigned PMIDs for these two names to 'pmid1' and 'pmid2', respectively.</p>
+<p>Since my first paper was published in 2007, I will retrieve all PMIDs of my paper from 2007 to this year (2014). I used both 'Yan-Hui Fan' and 'Yanhui Fan' as my name, so I assigned PMIDs for these two names to 'pmid1' and 'pmid2', respectively.</p>
 
-<div class="highlight highlight-r"><pre><span class="c">pmid1 = getPMIDs(author = "Yan-Hui Fan", dFrom = 2007, dTo = 2013, n = 10)</span>
-<span class="c">pmid1</span>
+<div class="highlight highlight-r"><pre>pmid1<span class="o">=</span>getPMIDs<span class="p">(</span>author<span class="o">=</span><span class="s">"Yan-Hui Fan"</span><span class="p">,</span>dFrom<span class="o">=</span><span class="m">2007</span><span class="p">,</span>dTo<span class="o">=</span><span class="m">2014</span><span class="p">,</span>n<span class="o">=</span><span class="m">10</span><span class="p">)</span>
+pmid1
 </pre></div>
 
-<p>[1] "22698742" "22693232" "22564732" "22301463" "22015308" "21283797"</p>
+<p>[1] "24935264" "24721834" "22698742" "22693232" "22564732" "22301463"<br>
+[7] "22015308" "21283797"</p>
 
-<div class="highlight highlight-r"><pre><span class="c">pmid2 = getPMIDs(author = "Yanhui Fan", dFrom = 2007, dTo = 2013, n = 10)</span>
-<span class="c">pmid2</span>
+<div class="highlight highlight-r"><pre>pmid2<span class="o">=</span>getPMIDs<span class="p">(</span>author<span class="o">=</span><span class="s">"Yanhui Fan"</span><span class="p">,</span>dFrom<span class="o">=</span><span class="m">2007</span><span class="p">,</span>dTo<span class="o">=</span><span class="m">2014</span><span class="p">,</span>n<span class="o">=</span><span class="m">10</span><span class="p">)</span>
+pmid2
 </pre></div>
 
-<p>[1] "20576513" "19412437"</p>
+<p>[1] "24890309" "20576513" "19412437"</p>
 
-<p>There are six PMIDs in 'pmid1' and two PMIDs in 'pmid2'. </p>
+<p>There are eight PMIDs in 'pmid1' and three PMIDs in 'pmid2'. </p>
 
 <h3>
 <a name="12-edit-pmids" class="anchor" href="#12-edit-pmids"><span class="octicon octicon-link"></span></a>1.2 edit PMIDs</h3>
@@ -80,13 +81,13 @@ install_github("felixfan/PubMedWordcloud") # from GitHub
 
 <p>PMID "22698742" in 'pmid1' and "20576513" in 'pmid2' are published by others (have the same name with me). So I want to exclude them and then combine 'pmid1' and 'pmid2'.   </p>
 
-<div class="highlight highlight-r"><pre><span class="c">rm1 = "22698742"</span>
-<span class="c">pmids1 = editPMIDs(x = pmid1, y = rm1, method = "exclude")</span>
+<div class="highlight highlight-r"><pre>rm1<span class="o">=</span><span class="s">"22698742"</span>
+pmids1<span class="o">=</span>editPMIDs<span class="p">(</span>x<span class="o">=</span>pmid1<span class="p">,</span>y<span class="o">=</span>rm1<span class="p">,</span>method<span class="o">=</span><span class="s">"exclude"</span><span class="p">)</span>
 
-<span class="c">rm2 = "20576513"</span>
-<span class="c">pmids2 = editPMIDs(x = pmid2, y = rm2, method = "exclude")</span>
+rm2<span class="o">=</span><span class="s">"20576513"</span>
+pmids2<span class="o">=</span>editPMIDs<span class="p">(</span>x<span class="o">=</span>pmid2<span class="p">,</span>y<span class="o">=</span>rm2<span class="p">,</span>method<span class="o">=</span><span class="s">"exclude"</span><span class="p">)</span>
 
-<span class="c">pmids = editPMIDs(x = pmids1, y = pmids2, method = "add")</span>
+pmids<span class="o">=</span>editPMIDs<span class="p">(</span>x<span class="o">=</span>pmids1<span class="p">,</span>y<span class="o">=</span>pmids2<span class="p">,</span>method<span class="o">=</span><span class="s">"add"</span><span class="p">)</span>
 </pre></div>
 
 <p><strong>Note: only unique PMIDs were kept</strong></p>
@@ -94,7 +95,7 @@ install_github("felixfan/PubMedWordcloud") # from GitHub
 <h3>
 <a name="13-download-abstracts" class="anchor" href="#13-download-abstracts"><span class="octicon octicon-link"></span></a>1.3 download abstracts</h3>
 
-<div class="highlight highlight-r"><pre><span class="c">abstracts = getAbstracts(pmids)</span>
+<div class="highlight highlight-r"><pre>abstracts<span class="o">=</span>getAbstracts<span class="p">(</span>pmids<span class="p">)</span>
 </pre></div>
 
 <h3>
@@ -102,115 +103,60 @@ install_github("felixfan/PubMedWordcloud") # from GitHub
 
 <p>clean data using paackage {tm}: remove Punctuations, remove Numbers, Translate characters to lower or upper case, remove stopwords, remove user specified words, Stemming words.   </p>
 
-<div class="highlight highlight-r"><pre><span class="c">cleanAbs = cleanAbstracts(abstracts)</span>
+<div class="highlight highlight-r"><pre>cleanAbs<span class="o">=</span>cleanAbstracts<span class="p">(</span>abstracts<span class="p">)</span>
 </pre></div>
 
 <h3>
 <a name="15-plot-wordcloud-using-plotwordcloud" class="anchor" href="#15-plot-wordcloud-using-plotwordcloud"><span class="octicon octicon-link"></span></a>1.5 plot wordcloud using 'plotWordCloud'</h3>
 
-<p>Plot with dafault parameters   </p>
+<p>Plot  withdafault parameters   </p>
 
-<div class="highlight highlight-r"><pre><span class="c">plotWordCloud(cleanAbs)</span>
+<div class="highlight highlight-r"><pre>plotWordCloud<span class="p">(</span>cleanAbs<span class="p">,</span>min.freq <span class="o">=</span> <span class="m">2</span><span class="p">,</span> scale <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">0.3</span><span class="p">))</span>
 </pre></div>
 
-<p><img src="figure/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"></p>
+<p><img src="/figure/unnamed-chunk-8-1.png" alt=""> </p>
 
 <p>Do not rotate words.  </p>
 
-<div class="highlight highlight-r"><pre><span class="c">plotWordCloud(cleanAbs, rot.per = 0)</span>
+<div class="highlight highlight-r"><pre>plotWordCloud<span class="p">(</span>cleanAbs<span class="p">,</span>min.freq <span class="o">=</span> <span class="m">2</span><span class="p">,</span> scale <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">0.3</span><span class="p">),</span>rot.per<span class="o">=</span><span class="m">0</span><span class="p">)</span>
 </pre></div>
 
-<p><img src="figure/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"></p>
+<p><img src="/figure/unnamed-chunk-9-1.png" alt=""> </p>
 
 <p>Plot using other colors.</p>
 
-<div class="highlight highlight-r"><pre><span class="c">colors = colSets(type = "Paired")</span>
-<span class="c">plotWordCloud(cleanAbs, rot.per = 0, colors = colors)</span>
+<div class="highlight highlight-r"><pre>colors<span class="o">=</span>colSets<span class="p">(</span>type<span class="o">=</span><span class="s">"Paired"</span><span class="p">)</span>
+plotWordCloud<span class="p">(</span>cleanAbs<span class="p">,</span>min.freq <span class="o">=</span> <span class="m">2</span><span class="p">,</span> scale <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">0.3</span><span class="p">),</span>colors<span class="o">=</span>colors<span class="p">)</span>
 </pre></div>
 
-<p><img src="figure/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"></p>
+<p><img src="/figure/unnamed-chunk-10-1.png" alt=""> </p>
 
 <p>Clean the data with Stemming words is TRUE and plot again.   </p>
 
-<div class="highlight highlight-r"><pre><span class="c">cleanAbs2 = cleanAbstracts(abstracts, stemDoc = TRUE)</span>
-<span class="c">plotWordCloud(cleanAbs2)</span>
+<div class="highlight highlight-r"><pre>cleanAbs2<span class="o">=</span>cleanAbstracts<span class="p">(</span>abstracts<span class="p">,</span>stemDoc <span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+plotWordCloud<span class="p">(</span>cleanAbs2<span class="p">,</span>min.freq <span class="o">=</span> <span class="m">2</span><span class="p">,</span> scale <span class="o">=</span> <span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">0.3</span><span class="p">))</span>
 </pre></div>
 
-<p><img src="figure/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"></p>
+<p><img src="/figure/unnamed-chunk-11-1.png" alt=""> </p>
 
-<p>**Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. 'pmWordCloud' can adjust the position and plot all words.</p>
-
-<h3>
-<a name="16-plot-wordcloud-using-pmwordcloud" class="anchor" href="#16-plot-wordcloud-using-pmwordcloud"><span class="octicon octicon-link"></span></a>1.6 plot wordcloud using 'pmWordCloud'</h3>
-
-<div class="highlight highlight-r"><pre><span class="c">pmWordCloud(cleanAbs, scale = 0.4)</span>
-</pre></div>
-
-<p><img src="figure/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"></p>
-
-<div class="highlight highlight-r"><pre><span class="c">pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4)</span>
-</pre></div>
-
-<p><img src="figure/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"></p>
-
-<div class="highlight highlight-r"><pre><span class="c">colors = colSets(type = "Set1")</span>
-<span class="c">pmWordCloud(cleanAbs, rot.per = 0, colors = colors, scale = 0.4)</span>
-</pre></div>
-
-<p><img src="figure/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"></p>
-
-<h2>
-<a name="2-wordcloud-of-study-about-ais-adolescent-idiopathic-scoliosis" class="anchor" href="#2-wordcloud-of-study-about-ais-adolescent-idiopathic-scoliosis"><span class="octicon octicon-link"></span></a>2. wordcloud of study about AIS (adolescent idiopathic scoliosis)</h2>
-
-<div class="highlight highlight-r"><pre><span class="c">pmids = getPMIDsByKeyWords(keys = "adolescent idiopathic scoliosis", dFrom = 2010, </span>
-<span class="c">    dTo = 2013)</span>
-</pre></div>
-
-<div class="highlight highlight-r"><pre><span class="c">abstracts = getAbstracts(pmids)</span>
-<span class="c">cleanAbs = cleanAbstracts(abstracts)</span>
-<span class="c">pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4, min.freq = 3)</span>
-</pre></div>
-
-<p><img src="figure/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"></p>
-
-<h2>
-<a name="3-wordcloud-of-study-about-ad-alzheimers-disease" class="anchor" href="#3-wordcloud-of-study-about-ad-alzheimers-disease"><span class="octicon octicon-link"></span></a>3. wordcloud of study about AD (Alzheimer's disease)</h2>
-
-<div class="highlight highlight-r"><pre><span class="c">pmids = getPMIDsByKeyWords(keys = "Alzheimer's disease", dFrom = 2013, dTo = 2013, </span>
-<span class="c">    n = 100)</span>
-</pre></div>
-
-<div class="highlight highlight-r"><pre><span class="c">abstracts = getAbstracts(pmids)</span>
-<span class="c">cleanAbs = cleanAbstracts(abstracts)</span>
-<span class="c">pmWordCloud(cleanAbs, rot.per = 0, scale = 0.4, min.freq = 8)</span>
-</pre></div>
-
-<p><img src="figure/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"></p>
+<p>**Note: ** 'plotWordCloud' uasually will generate a lot of warnings. Many words could not be fit on page. try to adjust the scale parameter, using smaller value may remove these warnings.    </p>
 
 <h2>
 <a name="4-references" class="anchor" href="#4-references"><span class="octicon octicon-link"></span></a>4. References</h2>
 
-<p><a href="http://www.vesnam.com/Rblog/pubmedwordcloud/">Shiny Pubmed Word Clouds</a><br><a href="http://cran.r-project.org/web/packages/wordcloud/index.html">wordcloud</a><br><a href="http://cran.r-project.org/web/packages/GOsummaries/index.html">GOsummaries: Word cloud summaries of GO enrichment analysis</a><br><a href="http://georeferenced.wordpress.com/2013/01/15/rwordcloud/">How I used R to create a word cloud, step by step</a><br><a href="http://www.ncbi.nlm.nih.gov/books/NBK25500/">NCBI</a>   </p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/felixfan/PubMedWordcloud/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/felixfan/PubMedWordcloud/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/felixfan/PubMedWordcloud"></a> is maintained by <a href="https://github.com/felixfan">felixfan</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+<p><a href="http://www.vesnam.com/Rblog/pubmedwordcloud/">Shiny Pubmed Word Clouds</a><br>
+<a href="http://cran.r-project.org/web/packages/wordcloud/index.html">wordcloud</a><br>
+<a href="http://cran.r-project.org/web/packages/GOsummaries/index.html">GOsummaries: Word cloud summaries of GO enrichment analysis</a><br>
+<a href="http://georeferenced.wordpress.com/2013/01/15/rwordcloud/">How I used R to create a word cloud, step by step</a><br>
+<a href="http://www.ncbi.nlm.nih.gov/books/NBK25500/">NCBI</a>   </p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/felixfan">felixfan</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-
-            <script type="text/javascript">
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
