@@ -133,3 +133,5 @@ plotWordCloud(cleanAbs2,min.freq = 2, scale = c(2, 0.3))
 
 
 
+# Citation:
+Yanhui Fan. (2016). PubMedWordcloud: create word cloud using abstracts from PubMed. Zenodo. [![DOI](https://zenodo.org/badge/5810/felixfan/PubMedWordcloud.svg)](https://zenodo.org/badge/latestdoi/5810/felixfan/PubMedWordcloud)
