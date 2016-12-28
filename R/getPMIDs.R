@@ -4,6 +4,7 @@
 #' @param dFrom  start year
 #' @param dTo    end year
 #' @param n      max number of retrieved articles
+#' @param https  use https instead of http
 #' @seealso \code{\link{getAbstracts}}
 #' @seealso \code{\link{editPMIDs}}
 #' @export
@@ -11,8 +12,15 @@
 #' # getPMIDs(author="Yan-Hui Fan",dFrom=2007,dTo=2013,n=10)
 #' 
 #' # getPMIDs(author="Yanhui Fan",dFrom=2007,dTo=2013,n=10)
-getPMIDs <-function(author,dFrom, dTo, n=50){
-  eSearch <- "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=" 
+getPMIDs <-function(author,dFrom, dTo, n=500, https=TRUE){
+  tmp <- "://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term="
+  eSearch <- ""
+  if(https){
+    eSearch <- paste("https", tmp, sep="") 
+  }else{
+    eSearch <- paste("http", tmp, sep="")
+  }
+  
   aL <- str_replace_all(author, " ", "+")
   aQ <- paste(aL, "[author]", sep = "")
   
