@@ -5,6 +5,7 @@
 #' @param dFrom   start year
 #' @param dTo     end year
 #' @param n       max number of retrieved articles
+#' @param https  use https instead of http
 #' @seealso \code{\link{getAbstracts}}
 #' @seealso \code{\link{editPMIDs}}
 #' @seealso \code{\link{getPMIDs}}
@@ -17,8 +18,14 @@
 #' # getPMIDsByKeyWords(keys="breast cancer",dFrom=2012,dTo=2013)
 #' 
 #' # getPMIDsByKeyWords(journal="science",dFrom=2012,dTo=2013)
-getPMIDsByKeyWords <-function(keys=NULL,journal=NULL,dFrom=NULL, dTo=NULL, n=10000){
-  eSearch <- "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=" 
+getPMIDsByKeyWords <-function(keys=NULL,journal=NULL,dFrom=NULL, dTo=NULL, n=10000, https=TRUE){
+  tmp <- "://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term="
+  eSearch <- ""
+  if(https){
+    eSearch <- paste("https", tmp, sep="") 
+  }else{
+    eSearch <- paste("http", tmp, sep="")
+  }
   
   if(is.null(keys) && is.null(journal)){
     stop("at most one of 'keys' and 'journal' can be NULL!")
