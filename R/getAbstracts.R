@@ -25,7 +25,8 @@ getAbstracts <-function(pmid,https=TRUE){
     }
     hlp1 <- paste(eDDownload, paste(pmid, collapse = ",", sep = ""), sep = "")
     hlp2 <- paste(hlp1, "&rettype=abstract", sep = "")
-    testDoc <- xmlTreeParse(hlp2, useInternalNodes = TRUE)
+    xData <- getURL(hlp2)
+    testDoc <- xmlTreeParse(xData, useInternalNodes = TRUE)
     topFetch <-xmlRoot(testDoc)
     abst <- xpathSApply(topFetch, "//Abstract", xmlValue)
   }else{
