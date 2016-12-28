@@ -1,5 +1,6 @@
 #' @title PubMed wordcloud using function 'wordcloud' of package {wordcloud}
 #' 
+#' @description PubMed wordcloud.
 #' @param abs output of cleanAbstracts, or a data frame with one colume of 'word' and one colume of 'freq'.
 #' @param scale A vector of length 2 indicating the range of the size of the words.
 #' @param min.freq words with frequency below min.freq will not be plotted

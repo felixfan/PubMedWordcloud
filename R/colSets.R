@@ -1,6 +1,7 @@
 #' @title plot colors
 #' 
-#' @param type palette names from the lists: Accent, Dark2, Pastel1, Pastel2, Paired, Set1, Set2, Set3
+#' @description plot colors.
+#' @param type palette names from the lists: Accent, Dark2, Pastel1, Pastel2, Paired, Set1, Set2, Set3.
 #' @export
 #' @examples
 #' # colors= colSets(type="Accent")
