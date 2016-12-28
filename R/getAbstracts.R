@@ -16,7 +16,7 @@
 getAbstracts <-function(pmid,https=TRUE){
   if(length(pmid)>0){
   #Data record download - basic URL
-    tmp <- "://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&id="
+    tmp <- "://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id="
     eDDownload <- ""
     if(https){
       eDDownload <- paste("https", tmp, sep="") 
