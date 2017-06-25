@@ -39,4 +39,3 @@ retrieve PMIDs (each PMID is 8 digits long) from PubMed for Specific Journal, Ke
 
 \code{\link{getPMIDs}}
 }
-

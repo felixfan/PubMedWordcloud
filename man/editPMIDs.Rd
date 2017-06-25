@@ -33,4 +33,3 @@ when method is 'add', PMIDs in 'x' and 'y' will be combined. when method is 'exc
 \seealso{
 \code{\link{getPMIDs}}
 }
-

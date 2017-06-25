@@ -27,4 +27,3 @@ retrieve abstracts of the specified PMIDs from PubMed.
 \seealso{
 \code{\link{getPMIDs}}
 }
-

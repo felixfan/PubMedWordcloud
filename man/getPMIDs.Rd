@@ -30,4 +30,3 @@ retrieve PMIDs (each PMID is 8 digits long) from PubMed for author and the speci
 
 \code{\link{editPMIDs}}
 }
-

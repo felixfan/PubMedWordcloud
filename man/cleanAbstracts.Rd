@@ -29,10 +29,9 @@ remove Punctuations, remove Numbers, Translate characters to lower or upper case
 # Abs=getAbstracts(c("22693232", "22564732"))
 # cleanAbs=cleanAbstracts(Abs)
 
-# text="Jobs received a number of honors and public recognition." 
+# text="Jobs received a number of honors and public recognition."
 # cleanD=cleanAbstracts(text)
 }
 \seealso{
 \code{\link{getAbstracts}}
 }
-

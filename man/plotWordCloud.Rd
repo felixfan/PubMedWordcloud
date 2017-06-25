@@ -36,4 +36,3 @@ This function just call 'wordcloud' from package {wordcloud}. See package {wordc
 # cleanD=cleanAbstracts(text)
 # plotWordCloud(cleanD,min.freq=1,scale=c(2,1))
 }
-
