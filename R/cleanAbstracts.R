@@ -1,5 +1,5 @@
 #' @title clean data
-#' 
+#'
 #' @description remove Punctuations, remove Numbers, Translate characters to lower or upper case, remove stopwords, remove user specified words, Stemming words.
 #' @param abstracts output of getAbstracts, or just a paragraph of text
 #' @param rmNum     Remove the text document with any numbers in it or not
@@ -13,8 +13,8 @@
 #' @examples
 #' # Abs=getAbstracts(c("22693232", "22564732"))
 #' # cleanAbs=cleanAbstracts(Abs)
-#' 
-#' # text="Jobs received a number of honors and public recognition." 
+#'
+#' # text="Jobs received a number of honors and public recognition."
 #' # cleanD=cleanAbstracts(text)
 cleanAbstracts <- function(abstracts,rmNum=TRUE,tolw=TRUE,toup=FALSE,
                            rmWords=TRUE,yrWords=NULL,stemDoc=FALSE){
@@ -38,7 +38,7 @@ cleanAbstracts <- function(abstracts,rmNum=TRUE,tolw=TRUE,toup=FALSE,
   if(stemDoc==TRUE){
     text2.corpus = tm_map(text2.corpus, stemDocument)
   }
-  text2.corpus <- tm_map(text2.corpus, PlainTextDocument) ### new added
+  # text2.corpus <- tm_map(text2.corpus, PlainTextDocument) ### new added
   tdm <- TermDocumentMatrix(text2.corpus)
   m <- as.matrix(tdm)
   v <- sort(rowSums(m),decreasing=TRUE)
