@@ -129,11 +129,11 @@ plotWordCloud(cleanAbs2,min.freq = 2, scale = c(2, 0.3))
 
 4. References
 -----------------
-[Shiny Pubmed Word Clouds](http://www.vesnam.com/Rblog/pubmedwordcloud/)
-[wordcloud](https://CRAN.R-project.org/package=wordcloud)
-[GOsummaries: Word cloud summaries of GO enrichment analysis](https://www.bioconductor.org/packages/release/bioc/html/GOsummaries.html)
-[How I used R to create a word cloud, step by step](http://georeferenced.wordpress.com/2013/01/15/rwordcloud/)
-[NCBI](http://www.ncbi.nlm.nih.gov/books/NBK25500/)
+[Shiny Pubmed Word Clouds](http://www.vesnam.com/Rblog/pubmedwordcloud/)   
+[wordcloud](https://CRAN.R-project.org/package=wordcloud)    
+[GOsummaries: Word cloud summaries of GO enrichment analysis](https://www.bioconductor.org/packages/release/bioc/html/GOsummaries.html)  
+[How I used R to create a word cloud, step by step](http://georeferenced.wordpress.com/2013/01/15/rwordcloud/)   
+[NCBI](http://www.ncbi.nlm.nih.gov/books/NBK25500/)   
 
 
 
