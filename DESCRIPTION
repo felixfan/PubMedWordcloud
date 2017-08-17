@@ -1,8 +1,8 @@
 Package: PubMedWordcloud
 Title: 'Pubmed' Word Clouds
 Description: Create a word cloud using the abstract of publications from 'Pubmed'.
-Version: 0.3.4
-Date: 2017-06-25
+Version: 0.3.5
+Date: 2017-Aug-17
 Author: Felix Yanhui Fan <nolanfyh@gmail.com>
 Imports:
     XML,

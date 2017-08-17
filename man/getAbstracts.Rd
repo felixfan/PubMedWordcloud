@@ -4,12 +4,14 @@
 \alias{getAbstracts}
 \title{get Abstracts}
 \usage{
-getAbstracts(pmid, https = TRUE)
+getAbstracts(pmid, https = TRUE, s = 100)
 }
 \arguments{
 \item{pmid}{a set of PMIDs}
 
 \item{https}{use https instead of http}
+
+\item{s}{download how many PMIDs each time}
 }
 \description{
 retrieve abstracts of the specified PMIDs from PubMed.
