@@ -75,6 +75,7 @@ getPMIDsByKeyWords <-function(keys=NULL,journal=NULL,dFrom=NULL, dTo=NULL, n=100
   doc <- xmlTreeParse(hlpURL, asText = TRUE)     
   IdlistHlp = xmlValue(doc[["doc"]][["eSearchResult"]][["IdList"]])
   
+  Idlist <- c() # return an empty vector if no item was found
   if (length(IdlistHlp) > 0){
     Idlist <- substring(IdlistHlp, seq(1, nchar(IdlistHlp)-1, 8), seq(8, nchar(IdlistHlp), 8))
   }
